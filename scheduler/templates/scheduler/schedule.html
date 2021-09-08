@@ -1,0 +1,32 @@
+{% extends "scheduler/base.html" %}
+{% block content %}
+  <div style="text-align: center;">
+    {% if user.is_authenticated %}
+    <h3>  Welcome, {{user}} </h3> 
+   {% endif %}
+     <h2> All valid IP addresses </h2>
+   
+        <hr>
+      {% for s in schedules %}
+        <div>
+          <pre> 
+          
+            {{s.id}}.IP Address- <b>{{s.IP}}</b>
+            Date Added - {{s.date_added}} (UTC)
+            <a href="{% url 'detail' s.pk %}"> <button style="margin-top:20px"class="btn btn-secondary"> Ping it </button> </a> 
+          </pre> 
+        </div>
+        <hr>
+      {% endfor%}
+
+          <form method="post">
+              {% csrf_token%}
+              {{form.as_p}}
+              <div> 
+                <button class="btn btn-success" type="submit">Add</button>
+              </div>
+           
+          </form>
+     
+  </div>
+{% endblock %}

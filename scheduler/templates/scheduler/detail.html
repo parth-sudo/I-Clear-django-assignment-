@@ -1,0 +1,15 @@
+{% extends "scheduler/base.html" %}
+
+{% block content %}
+
+<h1> IP address - {{ip}}</h1>
+{% if ping_return_value == False %} 
+<h3> This server is down, it can't be pinged.</h3>
+{% else %}
+<h3> This server is Up and running. Pinging this server... </h3>
+{% endif %}
+<br><br>
+<p> (I did not quite understand this part so couldn't do much)
+</p>
+
+{% endblock %}
